@@ -3,7 +3,37 @@ import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink } from 'lucide-reac
 const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjAzKSIvPjwvZz48L3N2Zz4=')] opacity-40"></div>
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjAzKSIvPjwvZz48L3N2Zz4=')] opacity-40"></div>
+
+        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-500/10 rounded-full mix-blend-multiply filter blur-3xl animate-float-slow"></div>
+        <div className="absolute top-1/3 -right-1/4 w-96 h-96 bg-slate-400/10 rounded-full mix-blend-multiply filter blur-3xl animate-float-slow" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-cyan-400/5 rounded-full mix-blend-multiply filter blur-3xl animate-float-slow" style={{ animationDelay: '4s' }}></div>
+
+        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <circle cx="10%" cy="20%" r="2" fill="rgba(59, 130, 246, 0.5)" filter="url(#glow)" className="animate-pulse-glow" />
+          <circle cx="90%" cy="30%" r="1.5" fill="rgba(34, 197, 94, 0.4)" filter="url(#glow)" className="animate-pulse-glow" style={{ animationDelay: '0.5s' }} />
+          <circle cx="20%" cy="80%" r="2" fill="rgba(6, 182, 212, 0.3)" filter="url(#glow)" className="animate-pulse-glow" style={{ animationDelay: '1s' }} />
+          <circle cx="85%" cy="75%" r="1.5" fill="rgba(59, 130, 246, 0.4)" filter="url(#glow)" className="animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+          <circle cx="15%" cy="50%" r="1" fill="rgba(34, 197, 94, 0.3)" filter="url(#glow)" className="animate-pulse-glow" style={{ animationDelay: '2s' }} />
+          <circle cx="80%" cy="50%" r="1.5" fill="rgba(6, 182, 212, 0.4)" filter="url(#glow)" className="animate-pulse-glow" style={{ animationDelay: '2.5s' }} />
+        </svg>
+
+        <div className="absolute top-20 right-20 w-2 h-2 bg-blue-400 rounded-full animate-drift" style={{ animationDelay: '0s', opacity: 0.6 }}></div>
+        <div className="absolute top-40 left-1/3 w-1.5 h-1.5 bg-green-400 rounded-full animate-drift" style={{ animationDelay: '1s', opacity: 0.4 }}></div>
+        <div className="absolute bottom-32 right-1/4 w-2 h-2 bg-cyan-400 rounded-full animate-drift" style={{ animationDelay: '2s', opacity: 0.5 }}></div>
+        <div className="absolute bottom-40 left-20 w-1.5 h-1.5 bg-blue-400 rounded-full animate-drift" style={{ animationDelay: '3s', opacity: 0.4 }}></div>
+      </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
         <div className="mb-8 inline-block">
