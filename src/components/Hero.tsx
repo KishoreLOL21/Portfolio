@@ -10,10 +10,27 @@ import { TextGenerateEffect } from "./ui/text-generate-effect";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { ImagesSlider } from "./ui/images-slider";
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { TypewriterEffectSmooth } from "./ui/typewriter-effect";
 
 const Hero = () => {
-  const words =
-    " Computer Science Engineer | Full Stack Developer | AI/ML Enthusiast";
+  const words = "Computer Science Engineer | Full Stack Developer | AI/ML Enthusiast";
+  const [animationKey, setAnimationKey] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimationKey((prev) => prev + 1);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Array of objects for typewriter effect
+  const greetingWords = [
+    { text: "Hello", className: "text-white font-bold" },
+    { text: "I am", className: "text-white font-bold" },
+    { text: "Kishore S", className: "text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300" }
+  ];
+
   const images = [
     "https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29kZXxlbnwwfHwwfHx8MA%3D%3D",
     "https://images.unsplash.com/photo-1488229297570-58520851e868?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fElubm92YXRpb258ZW58MHx8MHx8fDA%3D",
@@ -39,29 +56,17 @@ const Hero = () => {
   ];
 
   return (
-    <ImagesSlider className="h-[40rem]" images={images}>
+    <ImagesSlider className="h-[60rem]" images={images}>
       <motion.div
-        initial={{
-          opacity: 0,
-          y: -80,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 0.6,
-        }}
+        initial={{ opacity: 0, y: -80 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
         className="z-50 flex flex-col justify-center items-center"
       >
-        <motion.p className="font-bold text-xl md:text-6xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4">
-          The hero section slideshow <br /> nobody asked for
-        </motion.p>
         <section
           id="home"
           className="relative flex items-center justify-center text-white overflow-hidden min-h-[40rem]"
         >
-          {/* Main content with Vortex background */}
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center z-10">
             <div className="mb-8 inline-block">
               <img
@@ -71,20 +76,27 @@ const Hero = () => {
               />
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300">
-              Kishore S
-            </h1>
+            <div className="flex flex-col items-center gap-4 mb-6">
+              <div className="flex items-center gap-3 text-2xl md:text-4xl font-semibold text-cyan-400">
+                <span className="waving-hand select-none text-3xl md:text-5xl">👋</span>
+                <TypewriterEffectSmooth 
+                  words={greetingWords}
+                  className="text-2xl md:text-4xl"
+                  cursorClassName="text-cyan-400"
+                />
+              </div>
+            </div>
 
             <p className="text-xl md:text-2xl text-slate-300 mb-4 font-light">
               <TextGenerateEffect
+                key={animationKey}
                 words={words}
                 className="text-white text-lg md:text-2xl"
               />
             </p>
 
             <p className="text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
-              BTech in Computer Science and Engineering at VIT Chennai | CGPA:
-              8.84
+              BTech in Computer Science and Engineering at VIT Chennai | CGPA: 8.84
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-12 text-slate-300">
@@ -94,25 +106,18 @@ const Hero = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Phone size={18} />
-                <a
-                  href="tel:+917092112200"
-                  className="hover:text-blue-400 transition-colors"
-                >
+                <a href="tel:+917092112200" className="hover:text-blue-400 transition-colors">
                   +91 7092112200
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail size={18} />
-                <a
-                  href="mailto:kishorespms@gmail.com"
-                  className="hover:text-blue-400 transition-colors"
-                >
+                <a href="mailto:kishorespms@gmail.com" className="hover:text-blue-400 transition-colors">
                   kishorespms@gmail.com
                 </a>
               </div>
             </div>
 
-            {/* Floating Dock with transparent background and visible icons */}
             <div className="mt-4 flex items-center justify-center w-full">
               <FloatingDock
                 items={dockItems}
@@ -125,9 +130,7 @@ const Hero = () => {
               href="#about"
               onClick={(e) => {
                 e.preventDefault();
-                document
-                  .querySelector("#about")
-                  ?.scrollIntoView({ behavior: "smooth" });
+                document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
               }}
               className="mt-10 inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
@@ -136,7 +139,6 @@ const Hero = () => {
             </a>
           </div>
 
-          {/* scroll indicator ... keep existing */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
             <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
               <div className="w-1 h-2 bg-white/50 rounded-full" />

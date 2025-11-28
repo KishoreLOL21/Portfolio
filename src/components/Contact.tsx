@@ -173,7 +173,7 @@ const Contact = () => {
 
         <div className="mt-16 pt-8 border-t border-slate-200 text-center">
           <p className="text-slate-600">
-            © {new Date().getFullYear()} Kishore S. Built with React, TypeScript, and Tailwind CSS.
+            © {new Date().getFullYear()} Kishore S. 
           </p>
           <p className="text-slate-500 text-sm mt-2">
             All rights reserved. Available for full-time opportunities starting July 2026.
