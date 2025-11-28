@@ -1,38 +1,42 @@
-import { Trophy, Target, Users, Zap } from 'lucide-react';
+import { Trophy, Target, Users, Zap } from "lucide-react";
 
 const Extracurricular = () => {
   const achievements = [
     {
       icon: Trophy,
-      title: 'Top 20 Finalist (16th Place)',
-      event: 'GEN AI Hackathon by CLSS Labs, OMR',
-      description: 'Competed among numerous teams to secure a top position in a prestigious AI hackathon',
-      color: 'from-yellow-500 to-amber-500',
-      iconBg: 'bg-yellow-500',
+      title: "Top 20 Finalist (16th Place)",
+      event: "GEN AI Hackathon by CLSS Labs, OMR",
+      description:
+        "Competed among numerous teams to secure a top position in a prestigious AI hackathon",
+      color: "from-yellow-500 to-amber-500",
+      iconBg: "bg-yellow-500",
     },
     {
       icon: Target,
-      title: '3rd Place Winner',
-      event: 'DEFY25 Web3 Hackathon, DAO Community, VIT Chennai',
-      description: 'Secured third place in a competitive Web3 development hackathon',
-      color: 'from-orange-500 to-red-500',
-      iconBg: 'bg-orange-500',
+      title: "3rd Place Winner",
+      event: "DEFY25 Web3 Hackathon, DAO Community, VIT Chennai",
+      description:
+        "Secured third place in a competitive Web3 development hackathon",
+      color: "from-orange-500 to-red-500",
+      iconBg: "bg-orange-500",
     },
     {
       icon: Zap,
-      title: 'Hackathon Participant',
-      event: 'Hack the Horizon - AI Club, VIT Chennai',
-      description: 'Participated in a web design hackathon showcasing frontend development skills',
-      color: 'from-blue-500 to-cyan-500',
-      iconBg: 'bg-blue-500',
+      title: "Hackathon Participant",
+      event: "Hack the Horizon - AI Club, VIT Chennai",
+      description:
+        "Participated in a web design hackathon showcasing frontend development skills",
+      color: "from-blue-500 to-cyan-500",
+      iconBg: "bg-blue-500",
     },
     {
       icon: Users,
-      title: 'Android Workshop',
-      event: 'ACM Student Chapter, VIT Chennai',
-      description: 'Completed workshop on Android app development and built functional applications',
-      color: 'from-green-500 to-emerald-500',
-      iconBg: 'bg-green-500',
+      title: "Android Workshop",
+      event: "ACM Student Chapter, VIT Chennai",
+      description:
+        "Completed workshop on Android app development and built functional applications",
+      color: "from-green-500 to-emerald-500",
+      iconBg: "bg-green-500",
     },
   ];
 
@@ -45,45 +49,73 @@ const Extracurricular = () => {
           </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
           <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-            Active participation in hackathons, competitions, and technical communities
+            Active participation in hackathons, competitions, and technical
+            communities
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
-          {achievements.map((achievement, index) => {
-            const Icon = achievement.icon;
-            return (
-              <div
-                key={index}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
-              >
-                <div className={`h-2 bg-gradient-to-r ${achievement.color}`}></div>
-                <div className="p-8">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className={`${achievement.iconBg} p-4 rounded-xl flex-shrink-0`}>
-                      <Icon className="text-white" size={32} />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-slate-900 mb-1">
-                        {achievement.title}
-                      </h3>
-                      <p className="text-blue-600 font-semibold">{achievement.event}</p>
+        {/* Infinite moving cards */}
+        <div className="relative mb-16">
+          <div
+            className="
+              scroller
+              overflow-hidden
+              w-full
+            "
+            style={
+              {
+                "--animation-duration": "35s",
+                "--animation-direction": "forwards",
+              } as React.CSSProperties
+            }
+          >
+            <div className="scroller__inner">
+              {[...achievements, ...achievements].map((achievement, index) => {
+                const Icon = achievement.icon;
+                return (
+                  <div
+                    key={index}
+                    className="min-w-[280px] max-w-sm bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
+                  >
+                    <div
+                      className={`h-2 bg-gradient-to-r ${achievement.color}`}
+                    ></div>
+                    <div className="p-6">
+                      <div className="flex items-start gap-4 mb-4">
+                        <div
+                          className={`${achievement.iconBg} p-3 rounded-xl flex-shrink-0`}
+                        >
+                          <Icon className="text-white" size={28} />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-bold text-slate-900 mb-1">
+                            {achievement.title}
+                          </h3>
+                          <p className="text-blue-600 font-semibold text-sm">
+                            {achievement.event}
+                          </p>
+                        </div>
+                      </div>
+                      <p className="text-slate-700 leading-relaxed text-sm">
+                        {achievement.description}
+                      </p>
                     </div>
                   </div>
-                  <p className="text-slate-700 leading-relaxed">{achievement.description}</p>
-                </div>
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          </div>
         </div>
 
+        {/* Bottom stats / leadership block (unchanged) */}
         <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl p-8 md:p-12 text-white shadow-2xl">
           <div className="text-center mb-8">
             <h3 className="text-3xl font-bold mb-3">Leadership & Community</h3>
             <div className="w-20 h-1 bg-blue-500 mx-auto rounded-full mb-6"></div>
             <p className="text-slate-300 text-lg max-w-3xl mx-auto">
-              Actively engaged in technical communities, contributing to peer learning, collaborative projects,
-              and fostering innovation through hackathons and workshops.
+              Actively engaged in technical communities, contributing to peer
+              learning, collaborative projects, and fostering innovation through
+              hackathons and workshops.
             </p>
           </div>
 
