@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npm run build",
+  "routes": {
+    "/**": "index.html"
+  }
+}
