@@ -12,7 +12,7 @@ const Resume = () => {
         </p>
 
         <a
-          href="public\Kishore S BTech CSE Core 4th Yr 7th Sem Resume (2).pdf" 
+          href="public\Kishore S SDE BTech CSE Core Resume.pdf" 
           download
           className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-blue-600 text-white font-semibold shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all transform hover:-translate-y-0.5"
         >
